@@ -1,6 +1,6 @@
-# Explantaion for the scenario
+# Test out the project
 
-Visit [this website](https://ama-ha23jzwyq-quantumsplicer.vercel.app/) to test out the project
+Visit [the file sync project](https://ama-ha23jzwyq-quantumsplicer.vercel.app/) to test out the project
 
 # Explantaion for the scenario
 
