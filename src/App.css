@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
 }
 
 .App-logo {
