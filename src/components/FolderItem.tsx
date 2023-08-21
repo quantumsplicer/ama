@@ -14,7 +14,7 @@ export type FolderItemProps = {
   selectable?: boolean;
   rename?: boolean;
   onChange?: (id: number, name: string) => void;
-  onSelect?: (id: number, selection: string) => void;
+  onSelect?: (id: number, selection: boolean) => void;
 };
 
 export const FolderItem = (props: FolderItemProps) => {
@@ -33,7 +33,7 @@ export const FolderItem = (props: FolderItemProps) => {
           <input
             type="checkbox"
             onChange={(e) => {
-              onSelect && onSelect(id, e.target.value);
+              onSelect && onSelect(id, e.target.checked);
             }}
           ></input>
         </FolderItemSelection>

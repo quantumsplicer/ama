@@ -1,11 +1,9 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import logo from "./logo.svg";
+import React, { Dispatch, SetStateAction } from "react";
 import "./App.css";
 import { FileContainer } from "./components/FileContainer";
 import { useRecoilState } from "recoil";
 import {
   ChangesType,
-  FileItemType,
   System1Data,
   System2Data,
   SystemDataType,
@@ -24,8 +22,7 @@ function App() {
   ) => {
     let changesList: ChangesType[] = [];
     fromData.timeStamp?.map((item, index) => {
-      console.log(item, index, fromData.data);
-      if (item == "-1") {
+      if (item === "-1") {
         changesList.push({
           id: index,
           changeType: "delete",
@@ -37,7 +34,7 @@ function App() {
           changeType: "add",
           newName: fromData.data?.[index].name,
         });
-      } else if (item != toData.timeStamp?.[index]) {
+      } else if (item !== toData.timeStamp?.[index]) {
         changesList.push({
           id: index,
           time: item,
@@ -85,19 +82,17 @@ function App() {
   const onSync = (fromData: SystemDataType, toData: SystemDataType) => {
     // to create the list of changes to be sent from the 'fromSystem' to the 'toSystem'
     const changesInfo = createChangeList(fromData, toData);
-    console.log(changesInfo, "changes");
 
     // now the list of changes is sent from the 'fromSystem' to the 'toSystem
     // -> -> -> -> -> -> -> -> -> -> -> ->
     // when the 'toSystem' receies the Data it changes changes its data as mentioned
     const updatedData = updateData(changesInfo, toData);
-    console.log(updatedData, "updatedData");
     return updatedData as SystemDataType;
   };
 
   const removeDeleted = (systemData: SystemDataType) => {
     let clearedData: SystemDataType = {}
-    clearedData.timeStamp = systemData.timeStamp?.filter((item) => item != "-1");
+    clearedData.timeStamp = systemData.timeStamp?.filter((item) => item !== "-1");
     clearedData.data = systemData.data?.filter((item) => Object.keys(item).length > 0);
     return clearedData;
   };
@@ -108,7 +103,7 @@ function App() {
         data={system1Data as SystemDataType}
         changeData={setSystem1Data as Dispatch<SetStateAction<SystemDataType>>}
       />
-      <div className="ButtonContainer">
+      <div className="buttonContainer">
         <button
           onClick={() => {
             const newData: SystemDataType = onSync(system2Data, system1Data);

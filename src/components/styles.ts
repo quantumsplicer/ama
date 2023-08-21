@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const FileRootContainer = styled.div`
-  width: 40%;
+  width: 45%;
 `;
 
 export const FileButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 20px 0 10px 0;
 `;
 
 export const FileButtonItem = styled.div`
@@ -17,10 +18,12 @@ export const FileButtonItem = styled.div`
 export const FileInfoContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   border: solid 2px black;
   border-radius: 20px;
+  min-height: 50vh;
+  margin: 0 10px;
 `;
 
 export const FileItemWrapper = styled.div`

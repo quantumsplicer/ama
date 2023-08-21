@@ -1,4 +1,3 @@
-import { Moment } from "moment";
 import { atom } from "recoil";
 
 export type FileItemType = {

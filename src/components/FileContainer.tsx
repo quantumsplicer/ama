@@ -26,7 +26,7 @@ export const FileContainer = (props: FileContainerProps) => {
   const onChangeName = (id: number, name: string) => {
     setLocalData((prev) => {
       return prev.map((item, index) => {
-        if (index == id) {
+        if (index === id) {
           return {
             ...item,
             name: name,
@@ -45,9 +45,9 @@ export const FileContainer = (props: FileContainerProps) => {
       });
   };
 
-  const onSelection = (id: number, selection: string) => {
+  const onSelection = (id: number, selection: boolean) => {
     setSelected((prev) => {
-      if (selection === "false") {
+      if (!selection) {
         return prev.filter((item) => item !== id);
       } else {
         return [...prev, id];
@@ -101,7 +101,7 @@ export const FileContainer = (props: FileContainerProps) => {
   const saveButtonClick = () => {
     setButtonActive("");
     const newData = localData.map((item, index) => {
-      if (Object.keys(item).length  == 0  || selected.includes(index)) {
+      if (Object.keys(item).length  === 0  || selected.includes(index)) {
         return {};
       } else {
         return {
@@ -136,28 +136,23 @@ export const FileContainer = (props: FileContainerProps) => {
   };
 
   useEffect(() => {
-    console.log(data.data, "data");
     data.data && setLocalData(data.data as FileItemType[]);
   }, [data.data]);
-
-  useEffect(() => {
-    console.log(localData, "local");
-  }, [localData]);
 
   return (
     <FileRootContainer>
       <FileButtonContainer>
         <FileButtonItem>
-          {buttonActive && buttonActive == "add" ? (
+          {buttonActive && buttonActive === "add" ? (
             <button
-              disabled={(buttonActive && buttonActive != "add") as boolean}
+              disabled={(buttonActive && buttonActive !== "add") as boolean}
               onClick={saveButtonClick}
             >
               Save
             </button>
           ) : (
             <button
-              disabled={(buttonActive && buttonActive != "add") as boolean}
+              disabled={(buttonActive && buttonActive !== "add") as boolean}
               onClick={addButtonClick}
             >
               Add a File
@@ -165,16 +160,16 @@ export const FileContainer = (props: FileContainerProps) => {
           )}
         </FileButtonItem>
         <FileButtonItem>
-          {buttonActive && buttonActive == "rename" ? (
+          {buttonActive && buttonActive === "rename" ? (
             <button
-              disabled={(buttonActive && buttonActive != "rename") as boolean}
+              disabled={(buttonActive && buttonActive !== "rename") as boolean}
               onClick={saveButtonClick}
             >
               Save
             </button>
           ) : (
             <button
-              disabled={(buttonActive && buttonActive != "rename") as boolean}
+              disabled={(buttonActive && buttonActive !== "rename") as boolean}
               onClick={renameButtonClick}
             >
               Rename Files
@@ -182,16 +177,16 @@ export const FileContainer = (props: FileContainerProps) => {
           )}
         </FileButtonItem>
         <FileButtonItem>
-          {buttonActive && buttonActive == "delete" ? (
+          {buttonActive && buttonActive === "delete" ? (
             <button
-              disabled={(buttonActive && buttonActive != "delete") as boolean}
+              disabled={(buttonActive && buttonActive !== "delete") as boolean}
               onClick={saveButtonClick}
             >
               Save
             </button>
           ) : (
             <button
-              disabled={(buttonActive && buttonActive != "delete") as boolean}
+              disabled={(buttonActive && buttonActive !== "delete") as boolean}
               onClick={() => {
                 deleteButtonClick();
               }}
@@ -204,7 +199,6 @@ export const FileContainer = (props: FileContainerProps) => {
       <FileInfoContainer>
         {localData &&
           localData.map((item, index) => {
-            console.log(item);
             if (Object.keys(item).length > 0) {
               return (
                 <FileItemWrapper>
